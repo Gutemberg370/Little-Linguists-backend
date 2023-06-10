@@ -24,7 +24,7 @@ public class UserService {
 	}
 	
 	public Optional<User> getUser(String name) {
-		return userRepository.findByName(name);
+		return userRepository.findByNickname(name);
 	}
 	
 	public ResponseEntity<User> addUser(User user) {

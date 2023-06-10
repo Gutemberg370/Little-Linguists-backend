@@ -13,16 +13,16 @@ public class User {
 	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	//public Long id;
 	@Id
-	public String name;
+	public String nickname;
 	public String avatar;
 	
 	public User() {
 		
 	}
 	
-	public User(String name, String avatar) {
+	public User(String nickname, String avatar) {
 	    super();
-		this.name = name;	
+		this.nickname = nickname;	
 		this.avatar = avatar;
 	}
 	
@@ -34,30 +34,14 @@ public class User {
 		this.avatar = avatar;
 	}
 
-	public User(Long id, String name) {
-		super();
-		//this.id = id;
-		this.name = name;
-	}
-	
-	
-	//public Long getId() {
-	//	return id;
-	//}
 
-
-	//public void setId(Long id) {
-	//	this.id = id;
-	//}
-
-
-	public String getName() {
-		return name;
+	public String getNickname() {
+		return nickname;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 	
 

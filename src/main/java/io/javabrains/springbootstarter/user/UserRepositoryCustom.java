@@ -15,7 +15,7 @@ public class UserRepositoryCustom implements UserRepositoryCustomInterface{
 	
 	public ResponseEntity<User> createUser(User user) {
 		
-		User searchedUser = userRepository.findByName(user.getName()).orElse(null);
+		User searchedUser = userRepository.findByNickname(user.getNickname()).orElse(null);
 		
 		
 		if(searchedUser != null) {
