@@ -8,6 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 
 @Entity
 @Table(name = "gamespoints")
@@ -27,6 +28,10 @@ public class GamesPoints {
 	@Column(name = "puzzlegamepoints")
 	public int puzzleGamePoints;
 	
+	@Transient
+	public int classification;
+	
+
 	@OneToOne
     @MapsId
     @JoinColumn()
@@ -37,13 +42,14 @@ public class GamesPoints {
 	}
 	
 	public GamesPoints(String nickname, int cardGamePoints, int memoryGamePoints, int hangmanGamePoints,
-			int puzzleGamePoints, User user) {
+			int puzzleGamePoints, int classification, User user) {
 		super();
 		this.nickname = nickname;
 		this.cardGamePoints = cardGamePoints;
 		this.memoryGamePoints = memoryGamePoints;
 		this.hangmanGamePoints = hangmanGamePoints;
 		this.puzzleGamePoints = puzzleGamePoints;
+		this.classification = classification;
 		this.user = user;
 	}
 
@@ -85,6 +91,14 @@ public class GamesPoints {
 
 	public void setPuzzleGamePoints(int puzzleGamePoints) {
 		this.puzzleGamePoints = puzzleGamePoints;
+	}
+	
+	public int getClassification() {
+		return classification;
+	}
+
+	public void setClassification(int classification) {
+		this.classification = classification;
 	}
 
 	public User getUser() {
