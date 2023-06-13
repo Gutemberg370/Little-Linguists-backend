@@ -9,6 +9,9 @@ import org.springframework.stereotype.Repository;
 import io.javabrains.springbootstarter.gamesPoints.GamesPoints;
 import io.javabrains.springbootstarter.gamesPoints.GamesPointsRepository;
 
+import io.javabrains.springbootstarter.animalsActivities.AnimalsActivities;
+import io.javabrains.springbootstarter.animalsActivities.AnimalsActivitiesRepository;
+
 @Repository
 public class UserRepositoryCustom implements UserRepositoryCustomInterface{
 	
@@ -19,6 +22,10 @@ public class UserRepositoryCustom implements UserRepositoryCustomInterface{
 	@Autowired
 	@Lazy
 	private GamesPointsRepository gamesPointsRepository;
+	
+	@Autowired
+	@Lazy
+	private AnimalsActivitiesRepository animalsActivitiesRepository;
 	
 	public ResponseEntity<User> createUser(User user) {
 		
@@ -35,6 +42,11 @@ public class UserRepositoryCustom implements UserRepositoryCustomInterface{
 			userRepository.save(user);
 			gamesPointsRegister.setUser(user);
 			gamesPointsRepository.save(gamesPointsRegister);
+			
+			AnimalsActivities animalsActivitiesRegister = new AnimalsActivities();
+			animalsActivitiesRegister.setUser(user);
+			animalsActivitiesRepository.save(animalsActivitiesRegister);
+			
 			return new ResponseEntity<User>(
 					userRepository.save(user), 
 	                HttpStatus.CREATED);
